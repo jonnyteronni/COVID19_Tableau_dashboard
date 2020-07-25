@@ -1,0 +1,2528 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20202.20.0614.2338                               -->
+<workbook source-build='2020.2.2 (20202.20.0614.2338)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <MapboxVectorStylesAndLayers />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <_.fcp.SetMembershipControl.true...SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+    <WorksheetBackgroundTransparency />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='covid_19_india.csv (Multiple Connections)' inline='true' name='federated.02maphj0mi41hs13f1h040wepzwd' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='covid_19_india' name='textscan.1j7gkjc0z20u3114qgza60mgf1rg'>
+            <connection class='textscan' directory='Y:/Documents/Data_science/Ironhack/Projects/Tableau_climate_project/sources' filename='covid_19_india.csv' password='' server='' />
+          </named-connection>
+          <named-connection caption='city_region_match' name='excel-direct.0asdtjj018j54l1amo1x10kx7sx6'>
+            <connection class='excel-direct' cleaning='no' compat='no' dataRefreshTime='' filename='Y:/Documents/Data_science/Ironhack/Projects/Tableau_climate_project/sources/Air_source/csv/city_region_match.xls' interpretationMode='0' password='' server='' validate='no' />
+          </named-connection>
+          <named-connection caption='Air_quality_India_totalDB_clean' name='textscan.0tzmwrk0ov0j6y1bem2y206z1fix'>
+            <connection class='textscan' directory='Y:/Documents/Data_science/Ironhack/Projects/Tableau_climate_project/sources/Air_source/csv' filename='Air_quality_India_totalDB_clean.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation join='full' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[Air_quality_India_totalDB_clean.csv].[City]' />
+              <expression op='[Match_sheet].[City]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.0tzmwrk0ov0j6y1bem2y206z1fix' name='Air_quality_India_totalDB_clean.csv' table='[Air_quality_India_totalDB_clean#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_GB' separator=','>
+              <column datatype='date' name='Date' ordinal='0' />
+              <column datatype='string' name='Country' ordinal='1' />
+              <column datatype='string' name='City' ordinal='2' />
+              <column datatype='string' name='Specie' ordinal='3' />
+              <column datatype='integer' name='count' ordinal='4' />
+              <column datatype='real' name='min' ordinal='5' />
+              <column datatype='real' name='max' ordinal='6' />
+              <column datatype='real' name='median' ordinal='7' />
+              <column datatype='real' name='variance' ordinal='8' />
+            </columns>
+          </relation>
+          <relation connection='excel-direct.0asdtjj018j54l1amo1x10kx7sx6' name='Match_sheet' table='[Match_sheet$]' type='table'>
+            <columns gridOrigin='A1:F101:no:A1:F101:0' header='yes' outcome='6'>
+              <column datatype='integer' name='Rank' ordinal='0' />
+              <column datatype='string' name='City' ordinal='1' />
+              <column datatype='string' name='Region' ordinal='2' />
+              <column datatype='integer' name='Population (2011)(4)' ordinal='3' />
+              <column datatype='integer' name='Population (2001)(3)' ordinal='4' />
+              <column datatype='real' name='Population (1991)(3)' ordinal='5' />
+            </columns>
+          </relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation type='collection'>
+          <relation join='full' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[Air_quality_India_totalDB_clean.csv].[City]' />
+                <expression op='[Match_sheet].[City]' />
+              </expression>
+            </clause>
+            <relation connection='textscan.0tzmwrk0ov0j6y1bem2y206z1fix' name='Air_quality_India_totalDB_clean.csv' table='[Air_quality_India_totalDB_clean#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_GB' separator=','>
+                <column datatype='date' name='Date' ordinal='0' />
+                <column datatype='string' name='Country' ordinal='1' />
+                <column datatype='string' name='City' ordinal='2' />
+                <column datatype='string' name='Specie' ordinal='3' />
+                <column datatype='integer' name='count' ordinal='4' />
+                <column datatype='real' name='min' ordinal='5' />
+                <column datatype='real' name='max' ordinal='6' />
+                <column datatype='real' name='median' ordinal='7' />
+                <column datatype='real' name='variance' ordinal='8' />
+              </columns>
+            </relation>
+            <relation connection='excel-direct.0asdtjj018j54l1amo1x10kx7sx6' name='Match_sheet' table='[Match_sheet$]' type='table'>
+              <columns gridOrigin='A1:F101:no:A1:F101:0' header='yes' outcome='6'>
+                <column datatype='integer' name='Rank' ordinal='0' />
+                <column datatype='string' name='City' ordinal='1' />
+                <column datatype='string' name='Region' ordinal='2' />
+                <column datatype='integer' name='Population (2011)(4)' ordinal='3' />
+                <column datatype='integer' name='Population (2001)(3)' ordinal='4' />
+                <column datatype='real' name='Population (1991)(3)' ordinal='5' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.1j7gkjc0z20u3114qgza60mgf1rg' name='covid_19_india.csv' table='[covid_19_india#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_GB' separator=','>
+              <column datatype='integer' name='Sno' ordinal='0' />
+              <column datatype='date' name='Date' ordinal='1' />
+              <column datatype='string' name='Time' ordinal='2' />
+              <column datatype='string' name='State/UnionTerritory' ordinal='3' />
+              <column datatype='string' name='ConfirmedIndianNational' ordinal='4' />
+              <column datatype='string' name='ConfirmedForeignNational' ordinal='5' />
+              <column datatype='integer' name='Cum_Cured' ordinal='6' />
+              <column datatype='integer' name='Cum_Deaths' ordinal='7' />
+              <column datatype='integer' name='Cum_Confirmed' ordinal='8' />
+              <column datatype='integer' name='Cured' ordinal='9' />
+              <column datatype='integer' name='Deaths' ordinal='10' />
+              <column datatype='integer' name='Confirmed' ordinal='11' />
+            </columns>
+          </relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <cols>
+          <map key='[City (Match!sheet)]' value='[Match_sheet].[City]' />
+          <map key='[City]' value='[Air_quality_India_totalDB_clean.csv].[City]' />
+          <map key='[ConfirmedForeignNational]' value='[covid_19_india.csv].[ConfirmedForeignNational]' />
+          <map key='[ConfirmedIndianNational]' value='[covid_19_india.csv].[ConfirmedIndianNational]' />
+          <map key='[Confirmed]' value='[covid_19_india.csv].[Confirmed]' />
+          <map key='[Country]' value='[Air_quality_India_totalDB_clean.csv].[Country]' />
+          <map key='[Cum_Confirmed]' value='[covid_19_india.csv].[Cum_Confirmed]' />
+          <map key='[Cum_Cured]' value='[covid_19_india.csv].[Cum_Cured]' />
+          <map key='[Cum_Deaths]' value='[covid_19_india.csv].[Cum_Deaths]' />
+          <map key='[Cured]' value='[covid_19_india.csv].[Cured]' />
+          <map key='[Date (covid_19_india.csv)]' value='[covid_19_india.csv].[Date]' />
+          <map key='[Date]' value='[Air_quality_India_totalDB_clean.csv].[Date]' />
+          <map key='[Deaths]' value='[covid_19_india.csv].[Deaths]' />
+          <map key='[Population (1991)(3)]' value='[Match_sheet].[Population (1991)(3)]' />
+          <map key='[Population (2001)(3)]' value='[Match_sheet].[Population (2001)(3)]' />
+          <map key='[Population (2011)(4)]' value='[Match_sheet].[Population (2011)(4)]' />
+          <map key='[Rank]' value='[Match_sheet].[Rank]' />
+          <map key='[Region]' value='[Match_sheet].[Region]' />
+          <map key='[Sno]' value='[covid_19_india.csv].[Sno]' />
+          <map key='[Specie]' value='[Air_quality_India_totalDB_clean.csv].[Specie]' />
+          <map key='[State/UnionTerritory]' value='[covid_19_india.csv].[State/UnionTerritory]' />
+          <map key='[Time]' value='[covid_19_india.csv].[Time]' />
+          <map key='[count]' value='[Air_quality_India_totalDB_clean.csv].[count]' />
+          <map key='[max]' value='[Air_quality_India_totalDB_clean.csv].[max]' />
+          <map key='[median]' value='[Air_quality_India_totalDB_clean.csv].[median]' />
+          <map key='[min]' value='[Air_quality_India_totalDB_clean.csv].[min]' />
+          <map key='[variance]' value='[Air_quality_India_totalDB_clean.csv].[variance]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;£&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Match_sheet]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:F101:no:A1:F101:0&quot;</attribute>
+              <attribute datatype='boolean' name='header'>true</attribute>
+              <attribute datatype='integer' name='outcome'>6</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;£&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_GB&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date]</local-name>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Country]</local-name>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias>Country</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>City</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[City]</local-name>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias>City</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Specie</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Specie]</local-name>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias>Specie</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>count</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[count]</local-name>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias>count</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>min</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[min]</local-name>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias>min</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>max</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[max]</local-name>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias>max</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>median</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[median]</local-name>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias>median</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>variance</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[variance]</local-name>
+            <parent-name>[Air_quality_India_totalDB_clean.csv]</parent-name>
+            <remote-alias>variance</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Rank</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Rank]</local-name>
+            <parent-name>[Match_sheet]</parent-name>
+            <remote-alias>Rank</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>City</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[City (Match!sheet)]</local-name>
+            <parent-name>[Match_sheet]</parent-name>
+            <remote-alias>City</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RGB_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Region</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Region]</local-name>
+            <parent-name>[Match_sheet]</parent-name>
+            <remote-alias>Region</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RGB_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Population (2011)(4)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Population (2011)(4)]</local-name>
+            <parent-name>[Match_sheet]</parent-name>
+            <remote-alias>Population (2011)(4)</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Population (2001)(3)</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Population (2001)(3)]</local-name>
+            <parent-name>[Match_sheet]</parent-name>
+            <remote-alias>Population (2001)(3)</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Population (1991)(3)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Population (1991)(3)]</local-name>
+            <parent-name>[Match_sheet]</parent-name>
+            <remote-alias>Population (1991)(3)</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Sno</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Sno]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>Sno</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[Date (covid_19_india.csv)]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>Date</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Time</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Time]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>Time</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>State/UnionTerritory</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[State/UnionTerritory]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>State/UnionTerritory</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ConfirmedIndianNational</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ConfirmedIndianNational]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>ConfirmedIndianNational</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ConfirmedForeignNational</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[ConfirmedForeignNational]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>ConfirmedForeignNational</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RGB' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cum_Cured</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cum_Cured]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>Cum_Cured</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cum_Deaths</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cum_Deaths]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>Cum_Deaths</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cum_Confirmed</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cum_Confirmed]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>Cum_Confirmed</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cured</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cured]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>Cured</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Deaths</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Deaths]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>Deaths</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Confirmed</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Confirmed]</local-name>
+            <parent-name>[covid_19_india.csv]</parent-name>
+            <remote-alias>Confirmed</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='% Deaths_per_population' datatype='real' name='[Calculation_323414755499986944]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([Deaths])/SUM([Population (2011)(4)])*100' />
+      </column>
+      <column datatype='string' name='[City (Match!sheet)]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column caption='City1' datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column caption='Confirmed Foreign National' datatype='string' name='[ConfirmedForeignNational]' role='dimension' type='nominal' />
+      <column caption='Confirmed Indian National' datatype='string' name='[ConfirmedIndianNational]' role='dimension' type='nominal' />
+      <column datatype='string' name='[Country]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column caption='Date (covid 19 india.csv)' datatype='date' name='[Date (covid_19_india.csv)]' role='dimension' type='ordinal' />
+      <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+      <column datatype='integer' name='[Deaths]' role='measure' type='quantitative' />
+      <column datatype='string' name='[Region]' role='dimension' semantic-role='[Country].[Name]' type='nominal' />
+      <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+      <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <_.fcp.ObjectModelTableType.true...column caption='Air_quality_India_totalDB_clean.csv' datatype='table' name='[__tableau_internal_object_id__].[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='covid_19_india.csv' datatype='table' name='[__tableau_internal_object_id__].[covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15]' role='measure' type='quantitative' />
+      <column caption='Count' datatype='integer' name='[count]' role='measure' type='quantitative' />
+      <column caption='Max' datatype='real' name='[max]' role='measure' type='quantitative' />
+      <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+      <column caption='Min' datatype='real' name='[min]' role='measure' type='quantitative' />
+      <column caption='Variance' datatype='real' name='[variance]' role='measure' type='quantitative' />
+      <column-instance column='[median]' derivation='Avg' name='[avg:median:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+      <column-instance column='[Deaths]' derivation='Sum' name='[sum:Deaths:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:ok]' pivot='key' type='ordinal' />
+      <group caption='Action (DAY(Date))' hidden='true' name='[Action (DAY(Date))]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[tdy:Date:ok]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (DAY(Date),Specie1)' hidden='true' name='[Action (DAY(Date),Specie1)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[tdy:Date:ok]' />
+          <groupfilter function='level-members' level='[Specie]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (State/UnionTerritory1)' hidden='true' name='[Action (State/UnionTerritory1)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[State/UnionTerritory]' />
+        </groupfilter>
+      </group>
+      <drill-paths>
+        <drill-path name='Country, State/UnionTerritory, City'>
+          <field>[City]</field>
+        </drill-path>
+      </drill-paths>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' rowDisplayCount='1000' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:City:nk]' type='palette'>
+            <map to='#499894'>
+              <bucket>&quot;Mumbai&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Bhopal&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Hyderabad&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Nashik&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Muzaffarnagar&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Jaipur&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Chandigarh&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Visakhapatnam&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Kolkata&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Patna&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Thiruvananthapuram&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>%null%</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Mysore&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Lucknow&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Chennai&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Thrissur&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Nagpur&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;Delhi&quot;</bucket>
+            </map>
+          </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#000000'>
+              <bucket>&quot;[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[City].[Name]' value='%null%' />
+        <semantic-value key='[Country].[Name]' value='&quot;India&quot;' />
+        <semantic-value key='[State].[Name]' value='%null%' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <default-sorts>
+        <manual-sort column='[none:Forecast Indicator:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;Actual&quot;</bucket>
+            <bucket>&quot;Estimate&quot;</bucket>
+          </dictionary>
+        </manual-sort>
+      </default-sorts>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Air_quality_India_totalDB_clean.csv' id='Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC'>
+            <properties context=''>
+              <relation join='full' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[Air_quality_India_totalDB_clean.csv].[City]' />
+                    <expression op='[Match_sheet].[City]' />
+                  </expression>
+                </clause>
+                <relation connection='textscan.0tzmwrk0ov0j6y1bem2y206z1fix' name='Air_quality_India_totalDB_clean.csv' table='[Air_quality_India_totalDB_clean#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_GB' separator=','>
+                    <column datatype='date' name='Date' ordinal='0' />
+                    <column datatype='string' name='Country' ordinal='1' />
+                    <column datatype='string' name='City' ordinal='2' />
+                    <column datatype='string' name='Specie' ordinal='3' />
+                    <column datatype='integer' name='count' ordinal='4' />
+                    <column datatype='real' name='min' ordinal='5' />
+                    <column datatype='real' name='max' ordinal='6' />
+                    <column datatype='real' name='median' ordinal='7' />
+                    <column datatype='real' name='variance' ordinal='8' />
+                  </columns>
+                </relation>
+                <relation connection='excel-direct.0asdtjj018j54l1amo1x10kx7sx6' name='Match_sheet' table='[Match_sheet$]' type='table'>
+                  <columns gridOrigin='A1:F101:no:A1:F101:0' header='yes' outcome='6'>
+                    <column datatype='integer' name='Rank' ordinal='0' />
+                    <column datatype='string' name='City' ordinal='1' />
+                    <column datatype='string' name='Region' ordinal='2' />
+                    <column datatype='integer' name='Population (2011)(4)' ordinal='3' />
+                    <column datatype='integer' name='Population (2001)(3)' ordinal='4' />
+                    <column datatype='real' name='Population (1991)(3)' ordinal='5' />
+                  </columns>
+                </relation>
+              </relation>
+            </properties>
+          </object>
+          <object caption='covid_19_india.csv' id='covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15'>
+            <properties context=''>
+              <relation connection='textscan.1j7gkjc0z20u3114qgza60mgf1rg' name='covid_19_india.csv' table='[covid_19_india#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_GB' separator=','>
+                  <column datatype='integer' name='Sno' ordinal='0' />
+                  <column datatype='date' name='Date' ordinal='1' />
+                  <column datatype='string' name='Time' ordinal='2' />
+                  <column datatype='string' name='State/UnionTerritory' ordinal='3' />
+                  <column datatype='string' name='ConfirmedIndianNational' ordinal='4' />
+                  <column datatype='string' name='ConfirmedForeignNational' ordinal='5' />
+                  <column datatype='integer' name='Cum_Cured' ordinal='6' />
+                  <column datatype='integer' name='Cum_Deaths' ordinal='7' />
+                  <column datatype='integer' name='Cum_Confirmed' ordinal='8' />
+                  <column datatype='integer' name='Cured' ordinal='9' />
+                  <column datatype='integer' name='Deaths' ordinal='10' />
+                  <column datatype='integer' name='Confirmed' ordinal='11' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='AND'>
+              <expression op='='>
+                <expression op='[Date]' />
+                <expression op='[Date (covid_19_india.csv)]' />
+              </expression>
+              <expression op='='>
+                <expression op='[Region]' />
+                <expression op='[State/UnionTerritory]' />
+              </expression>
+            </expression>
+            <first-end-point object-id='Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC' />
+            <second-end-point object-id='covid_19_india.csv_955C2ED408A34C139DBEE5DEA3387D15' />
+          </relationship>
+        </relationships>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='MVP' type='sheet' worksheet='Graph_NO2' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='Covid Map' />
+        <param name='special-fields' value='all' />
+        <param name='target' value='MVP' />
+      </command>
+    </action>
+    <action caption='Filter 2 (generated)' name='[Action2]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='MVP' type='sheet' worksheet='Covid Map' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='Covid Map' />
+        <param name='special-fields' value='all' />
+        <param name='target' value='MVP' />
+      </command>
+    </action>
+    <action caption='Filter 1 (generated) 1' name='[Action3]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='MVP (2)' type='sheet' worksheet='Graph_NO2' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='Covid Map' />
+        <param name='special-fields' value='all' />
+        <param name='target' value='MVP (2)' />
+      </command>
+    </action>
+    <action caption='Filter 2 (generated) 1' name='[Action4]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='MVP (2)' type='sheet' worksheet='Covid Map' />
+      <command command='tsc:tsl-filter'>
+        <param name='exclude' value='Covid Map' />
+        <param name='special-fields' value='all' />
+        <param name='target' value='MVP (2)' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Air Map'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column datatype='integer' name='[Confirmed]' role='measure' type='quantitative' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[median]' derivation='Avg' name='[avg:median:qk]' pivot='key' type='quantitative' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[Specie]' derivation='None' name='[none:Specie:nk]' pivot='key' type='nominal' />
+            <column-instance column='[State/UnionTerritory]' derivation='None' name='[none:State/UnionTerritory:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Confirmed]' derivation='Sum' name='[sum:Confirmed:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[tdy:Date:ok]' />
+              <groupfilter function='level-members' level='[Specie]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]'>
+            <groupfilter function='level-members' level='[State/UnionTerritory]' user:ui-action-filter='[Action2]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]'>
+            <groupfilter function='level-members' level='[none:Specie:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[Longitude (generated)]' field-type='quantitative' max='12860731.902181502' min='2842614.6676102052' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[Latitude (generated)]' field-type='quantitative' max='4075525.5143450238' min='-2834561.1719160574' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Confirmed:qk]' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-sequential'>
+                <color>#f1f1f1</color>
+                <color>#f2dada</color>
+                <color>#f3c3c3</color>
+                <color>#f5abab</color>
+                <color>#f69393</color>
+                <color>#f87c7c</color>
+                <color>#f96363</color>
+                <color>#fa4b4b</color>
+                <color>#fc3232</color>
+                <color>#fd1919</color>
+                <color>#ff0000</color>
+              </color-palette>
+            </encoding>
+            <encoding attr='color' field='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' palette='tableau-map-temperatur' type='interpolated' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' />
+              <text column='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' />
+              <lod column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk]' />
+              <tooltip column='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Confirmed:qk]' />
+              <geometry column='[federated.02maphj0mi41hs13f1h040wepzwd].[Geometry (generated)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.02maphj0mi41hs13f1h040wepzwd].[Latitude (generated)]</rows>
+        <cols>[federated.02maphj0mi41hs13f1h040wepzwd].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{3968C0AD-3A0F-4F21-9CAD-B040FC91E5E8}' />
+    </worksheet>
+    <worksheet name='COVID19'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#cd4f51' fontsize='36'>&lt;Sheet Name&gt;</run>
+            <run fontalignment='1'>Æ&#10;</run>
+            <run bold='true' fontalignment='1' fontcolor='#cd4f51' fontsize='28'><![CDATA[Deaths <[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]>]]></run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Deaths]' role='measure' type='quantitative' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[Deaths]' derivation='Sum' name='[sum:Deaths:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[tdy:Date:ok]' />
+              <groupfilter function='level-members' level='[Specie]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]'>
+            <groupfilter function='level-members' level='[State/UnionTerritory]' user:ui-action-filter='[Action2]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-align' value='center' />
+            <format attr='color' data-class='subtotal' scope='rows' value='#cd4f51' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='color' scope='rows' value='#cd4f51' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='worksheet'>
+            <format attr='font-size' value='28' />
+            <format attr='color' value='#cd4f51' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{76D50C30-06C4-40DC-8121-02453E6F9AF8}' />
+    </worksheet>
+    <worksheet name='Chemicals'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[Specie]' derivation='None' name='[none:Specie:nk]' pivot='key' type='nominal' />
+            <column-instance column='[median]' derivation='Sum' name='[sum:median:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[tdy:Date:ok]' />
+              <groupfilter function='level-members' level='[Specie]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]'>
+            <groupfilter function='level-members' level='[State/UnionTerritory]' user:ui-action-filter='[Action2]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]'>
+            <groupfilter function='level-members' level='[none:Specie:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:median:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]</cols>
+      </table>
+      <simple-id uuid='{EF8FBA12-2193-4C7C-89A6-B77A333CE028}' />
+    </worksheet>
+    <worksheet name='Chemicals_t'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column caption='City1' datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='string' name='[Region]' role='dimension' semantic-role='[Country].[Name]' type='nominal' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[median]' derivation='Avg' name='[avg:median:qk]' pivot='key' type='quantitative' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Region]' derivation='None' name='[none:Region:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Specie]' derivation='None' name='[none:Specie:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[tdy:Date:ok]' />
+              <groupfilter function='level-members' level='[Specie]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]'>
+            <groupfilter function='level-members' level='[State/UnionTerritory]' user:ui-action-filter='[Action2]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Region:nk]'>
+            <groupfilter function='except' user:ui-domain='relevant' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:Region:nk]' />
+              <groupfilter function='member' level='[none:Region:nk]' member='%null%' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]'>
+            <groupfilter function='level-members' level='[none:Specie:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Region:nk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+            <encoding attr='color' field='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' palette='tableau-map-temperatur' type='interpolated' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='has-stroke' value='false' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-line-first' value='true' />
+                <format attr='mark-labels-line-last' value='true' />
+                <format attr='mark-labels-range-min' value='true' />
+                <format attr='mark-labels-range-max' value='true' />
+                <format attr='mark-labels-mode' value='all' />
+                <format attr='mark-labels-range-scope' value='pane' />
+                <format attr='mark-labels-range-field' value='' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.02maphj0mi41hs13f1h040wepzwd].[none:Region:nk] / [federated.02maphj0mi41hs13f1h040wepzwd].[none:City:nk])</rows>
+        <cols>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]</cols>
+      </table>
+      <simple-id uuid='{B029DF6B-2D9D-4156-B585-9DB738B4068D}' />
+    </worksheet>
+    <worksheet name='Confirmed_covid'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column datatype='integer' name='[Confirmed]' role='measure' type='quantitative' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[State/UnionTerritory]' derivation='None' name='[none:State/UnionTerritory:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Confirmed]' derivation='Sum' name='[sum:Confirmed:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Confirmed:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk]</rows>
+        <cols>[federated.02maphj0mi41hs13f1h040wepzwd].[mn:Date:ok]</cols>
+      </table>
+      <simple-id uuid='{EA0534FF-6126-4325-8B4D-853285EAF75D}' />
+    </worksheet>
+    <worksheet name='Correlation'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Deaths]' role='measure' type='quantitative' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[median]' derivation='Avg' name='[avg:median:qk]' pivot='key' type='quantitative' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Specie]' derivation='None' name='[none:Specie:nk]' pivot='key' type='nominal' />
+            <column-instance column='[State/UnionTerritory]' derivation='None' name='[none:State/UnionTerritory:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Deaths]' derivation='Sum' name='[sum:Deaths:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Year' name='[yr:Date:ok]' pivot='key' type='ordinal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]'>
+            <groupfilter function='member' level='[none:Specie:nk]' member='&quot;pm25&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[yr:Date:ok]'>
+            <groupfilter function='member' level='[yr:Date:ok]' member='2020' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[yr:Date:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk] + [federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk])</rows>
+        <cols>([federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk] / [federated.02maphj0mi41hs13f1h040wepzwd].[mn:Date:ok])</cols>
+      </table>
+      <simple-id uuid='{ECBA735D-04D5-4ED9-B13F-8D164EF56D53}' />
+    </worksheet>
+    <worksheet name='Covid Map'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column caption='% Deaths_per_population' datatype='real' name='[Calculation_323414755499986944]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Deaths])/SUM([Population (2011)(4)])*100' />
+            </column>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Deaths]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Population (2011)(4)]' role='measure' type='quantitative' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[median]' derivation='Avg' name='[avg:median:qk]' pivot='key' type='quantitative' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[State/UnionTerritory]' derivation='None' name='[none:State/UnionTerritory:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Deaths]' derivation='Sum' name='[sum:Deaths:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_323414755499986944]' derivation='User' name='[usr:Calculation_323414755499986944:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[tdy:Date:ok]' />
+              <groupfilter function='level-members' level='[Specie]' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' center='10.0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]' palette='tableau-map-temperatur' type='interpolated' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]' />
+              <text column='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]' />
+              <tooltip column='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' />
+              <lod column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk]' />
+              <lod column='[federated.02maphj0mi41hs13f1h040wepzwd].[usr:Calculation_323414755499986944:qk]' />
+              <geometry column='[federated.02maphj0mi41hs13f1h040wepzwd].[Geometry (generated)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.02maphj0mi41hs13f1h040wepzwd].[Latitude (generated)]</rows>
+        <cols>[federated.02maphj0mi41hs13f1h040wepzwd].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{EA2ECC13-341E-436F-A620-8BFA7FEA6D89}' />
+    </worksheet>
+    <worksheet name='Covid Map%'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column caption='% Deaths_per_population' datatype='real' name='[Calculation_323414755499986944]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([Deaths])/SUM([Population (2011)(4)])*100' />
+            </column>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Deaths]' role='measure' type='quantitative' />
+            <column datatype='integer' name='[Population (2011)(4)]' role='measure' type='quantitative' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[median]' derivation='Avg' name='[avg:median:qk]' pivot='key' type='quantitative' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[State/UnionTerritory]' derivation='None' name='[none:State/UnionTerritory:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_323414755499986944]' derivation='User' name='[usr:Calculation_323414755499986944:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[tdy:Date:ok]' />
+              <groupfilter function='level-members' level='[Specie]' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]'>
+            <groupfilter function='level-members' level='[State/UnionTerritory]' user:ui-action-filter='[Action2]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (DAY(Date),Specie1)]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.02maphj0mi41hs13f1h040wepzwd].[usr:Calculation_323414755499986944:qk]' palette='tableau-map-temperatur' type='interpolated' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.02maphj0mi41hs13f1h040wepzwd].[usr:Calculation_323414755499986944:qk]' />
+              <text column='[federated.02maphj0mi41hs13f1h040wepzwd].[usr:Calculation_323414755499986944:qk]' />
+              <tooltip column='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' />
+              <lod column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk]' />
+              <geometry column='[federated.02maphj0mi41hs13f1h040wepzwd].[Geometry (generated)]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.02maphj0mi41hs13f1h040wepzwd].[Latitude (generated)]</rows>
+        <cols>[federated.02maphj0mi41hs13f1h040wepzwd].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{4BCAB762-82CD-42D0-B53C-067DF51C8FE0}' />
+    </worksheet>
+    <worksheet name='Graph_NO2'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Deaths]' role='measure' type='quantitative' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[median]' derivation='Avg' name='[avg:median:qk]' pivot='key' type='quantitative' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[Specie]' derivation='None' name='[none:Specie:nk]' pivot='key' type='nominal' />
+            <column-instance column='[State/UnionTerritory]' derivation='None' name='[none:State/UnionTerritory:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Deaths]' derivation='Sum' name='[sum:Deaths:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Month-Trunc' name='[tmn:Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]'>
+            <groupfilter function='level-members' level='[State/UnionTerritory]' user:ui-action-filter='[Action2]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]'>
+            <groupfilter function='member' level='[none:Specie:nk]' member='&quot;no2&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk]'>
+            <groupfilter function='level-members' level='[none:State/UnionTerritory:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.02maphj0mi41hs13f1h040wepzwd].[tmn:Date:qk]' included-values='in-range'>
+            <min>#2019-10-01 00:00:00#</min>
+            <max>#2020-07-01 00:00:00#</max>
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[tmn:Date:qk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' field-type='quantitative' range-type='independent' scope='rows' type='space' />
+            <format attr='display' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' scope='rows' value='false' />
+            <format attr='display' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]' scope='rows' value='false' />
+            <format attr='title' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[tdy:Date:qk]' scope='cols' value='' />
+            <format attr='stroke-size' value='0' />
+            <format attr='tick-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]' value='false' />
+            <format attr='text-orientation' field='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]' value='-90' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#ffffff' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.02maphj0mi41hs13f1h040wepzwd].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.02maphj0mi41hs13f1h040wepzwd].[:Measure Names]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='6' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.02maphj0mi41hs13f1h040wepzwd].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk] * ([federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk] + [federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]))</rows>
+        <cols>[federated.02maphj0mi41hs13f1h040wepzwd].[tdy:Date:qk]</cols>
+      </table>
+      <simple-id uuid='{212313D5-30BC-47E9-8796-2C7D7F2D4DF5}' />
+    </worksheet>
+    <worksheet name='Graph_PM25'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Deaths]' role='measure' type='quantitative' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[median]' derivation='Avg' name='[avg:median:qk]' pivot='key' type='quantitative' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[Specie]' derivation='None' name='[none:Specie:nk]' pivot='key' type='nominal' />
+            <column-instance column='[State/UnionTerritory]' derivation='None' name='[none:State/UnionTerritory:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Deaths]' derivation='Sum' name='[sum:Deaths:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Day-Trunc' name='[tdy:Date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Date]' derivation='Month-Trunc' name='[tmn:Date:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]'>
+            <groupfilter function='level-members' level='[State/UnionTerritory]' user:ui-action-filter='[Action2]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]'>
+            <groupfilter function='member' level='[none:Specie:nk]' member='&quot;pm25&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk]'>
+            <groupfilter function='level-members' level='[none:State/UnionTerritory:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='quantitative' column='[federated.02maphj0mi41hs13f1h040wepzwd].[tmn:Date:qk]' included-values='in-range'>
+            <min>#2019-10-01 00:00:00#</min>
+            <max>#2020-07-01 00:00:00#</max>
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[tmn:Date:qk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]</column>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[Action (State/UnionTerritory1)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' field-type='quantitative' range-type='independent' scope='rows' type='space' />
+            <format attr='display' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' scope='rows' value='false' />
+            <format attr='display' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]' scope='rows' value='false' />
+            <format attr='title' class='0' field='[federated.02maphj0mi41hs13f1h040wepzwd].[tdy:Date:qk]' scope='cols' value='' />
+            <format attr='stroke-size' value='0' />
+            <format attr='tick-color' value='#00000000' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='display' field='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]' value='false' />
+            <format attr='text-orientation' field='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]' value='-90' />
+          </style-rule>
+          <style-rule element='pane'>
+            <format attr='border-width' data-class='total' value='0' />
+            <format attr='border-style' data-class='total' value='none' />
+          </style-rule>
+          <style-rule element='table'>
+            <format attr='background-color' value='#ffffff' />
+          </style-rule>
+          <style-rule element='dropline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='gridline'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+          </style-rule>
+          <style-rule element='zeroline'>
+            <format attr='stroke-size' value='0' />
+            <format attr='line-visibility' value='off' />
+          </style-rule>
+          <style-rule element='table-div'>
+            <format attr='stroke-size' scope='rows' value='0' />
+            <format attr='line-visibility' scope='rows' value='off' />
+            <format attr='stroke-size' scope='cols' value='0' />
+            <format attr='line-visibility' scope='cols' value='off' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.02maphj0mi41hs13f1h040wepzwd].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='4' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.02maphj0mi41hs13f1h040wepzwd].[:Measure Names]' />
+            </encodings>
+            <trendline enable-confidence-bands='false' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' fit='linear' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='6' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Line' />
+            <encodings>
+              <color column='[federated.02maphj0mi41hs13f1h040wepzwd].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk] * ([federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk] + [federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]))</rows>
+        <cols>[federated.02maphj0mi41hs13f1h040wepzwd].[tdy:Date:qk]</cols>
+      </table>
+      <simple-id uuid='{9EFE4033-B6BE-46F1-9F29-FD1A387B5BCA}' />
+    </worksheet>
+    <worksheet name='PM25'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column caption='City1' datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column datatype='date' name='[Date]' role='dimension' type='ordinal' />
+            <column caption='Specie1' datatype='string' name='[Specie]' role='dimension' type='nominal' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[Date]' derivation='Month' name='[mn:Date:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Specie]' derivation='None' name='[none:Specie:nk]' pivot='key' type='nominal' />
+            <column-instance column='[median]' derivation='Sum' name='[sum:median:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]'>
+            <groupfilter function='member' level='[none:Specie:nk]' member='&quot;pm25&quot;' user:ui-domain='relevant' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:median:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.02maphj0mi41hs13f1h040wepzwd].[none:City:nk]</rows>
+        <cols>[federated.02maphj0mi41hs13f1h040wepzwd].[mn:Date:ok]</cols>
+      </table>
+      <simple-id uuid='{81AAEA95-7E0C-473D-8233-EBD3A2F32FE4}' />
+    </worksheet>
+    <worksheet name='Sheet 10'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{28512164-087E-42C8-904A-BD6C7B447216}' />
+    </worksheet>
+    <worksheet name='Sheet 11'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column caption='City1' datatype='string' name='[City]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <_.fcp.ObjectModelTableType.false...column caption='Air_quality_India_totalDB_clean.csv' datatype='integer' name='[__tableau_internal_object_id__].[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]' role='measure' type='quantitative' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <_.fcp.ObjectModelTableType.true...column caption='Air_quality_India_totalDB_clean.csv' datatype='table' name='[__tableau_internal_object_id__].[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]' role='measure' type='quantitative' />
+            <column-instance column='[__tableau_internal_object_id__].[Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[City]' derivation='None' name='[none:City:nk]' pivot='key' type='nominal' />
+            <column-instance column='[State/UnionTerritory]' derivation='None' name='[none:State/UnionTerritory:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.02maphj0mi41hs13f1h040wepzwd].[__tableau_internal_object_id__].[cnt:Air_quality_India_totalDB_clean.csv_1081EB71FF1F4AAEAB539BCFA3EE62EC:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk] / [federated.02maphj0mi41hs13f1h040wepzwd].[none:City:nk])</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{94C6F958-D7EA-433F-B659-9105974E1851}' />
+    </worksheet>
+    <worksheet name='why_nulls'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='covid_19_india.csv (Multiple Connections)' name='federated.02maphj0mi41hs13f1h040wepzwd' />
+          </datasources>
+          <datasource-dependencies datasource='federated.02maphj0mi41hs13f1h040wepzwd'>
+            <column datatype='integer' name='[Confirmed]' role='measure' type='quantitative' />
+            <column caption='State/UnionTerritory1' datatype='string' name='[State/UnionTerritory]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column caption='Median' datatype='real' name='[median]' role='measure' type='quantitative' />
+            <column-instance column='[State/UnionTerritory]' derivation='None' name='[none:State/UnionTerritory:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Confirmed]' derivation='Sum' name='[sum:Confirmed:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[median]' derivation='Sum' name='[sum:median:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Confirmed:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:median:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.02maphj0mi41hs13f1h040wepzwd].[none:State/UnionTerritory:nk]</rows>
+        <cols>([federated.02maphj0mi41hs13f1h040wepzwd].[sum:Confirmed:qk] + [federated.02maphj0mi41hs13f1h040wepzwd].[sum:median:qk])</cols>
+      </table>
+      <simple-id uuid='{1BB9BF1C-9D90-431B-A2D0-9560D11EF8D0}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='Dashboard 2'>
+      <style />
+      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
+      <zones>
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' h='37375' id='3' w='90200' x='3700' y='3375'>
+          <formatted-text>
+            <run>PM25
+Fine particles can come from various sources. They include power plants, motor vehicles, airplanes, residential wood burning, forest fires, agricultural burning, volcanic eruptions and dust storms. 
+
+Since they are so small and light, fine particles tend to stay longer in the air than heavier particles. This increases the chances of humans and animals inhaling them into the bodies. Owing to their minute size, particles smaller than 2.5 micrometers are able to bypass the nose and throat and penetrate deep into the lungs and some may even enter the circulatory system.
+
+Studies have found a close link between exposure to fine particles and premature death from heart and lung disease. Fine particles are also known to trigger or worsen chronic disease such as asthma, heart attack, bronchitis and other respiratory problems. </run>
+          </formatted-text>
+        </zone>
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' h='17000' id='4' w='87000' x='4200' y='48125'>
+          <formatted-text>
+            <run>NO2
+
+Nitrogen dioxide is part of a group of gaseous air pollutants produced as a result of road traffic and other fossil fuel combustion processes. Its presence in air contributes to the formation and modification of other air pollutants, such as ozone and particulate matter, and to acid rain.</run>
+          </formatted-text>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='6' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98000' id='5' param='vert' w='98400' x='800' y='1000'>
+                <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' h='37375' id='3' w='90200' x='3700' y='3375'>
+                  <formatted-text>
+                    <run>PM25
+Fine particles can come from various sources. They include power plants, motor vehicles, airplanes, residential wood burning, forest fires, agricultural burning, volcanic eruptions and dust storms. 
+
+Since they are so small and light, fine particles tend to stay longer in the air than heavier particles. This increases the chances of humans and animals inhaling them into the bodies. Owing to their minute size, particles smaller than 2.5 micrometers are able to bypass the nose and throat and penetrate deep into the lungs and some may even enter the circulatory system.
+
+Studies have found a close link between exposure to fine particles and premature death from heart and lung disease. Fine particles are also known to trigger or worsen chronic disease such as asthma, heart attack, bronchitis and other respiratory problems. </run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' h='17000' id='4' w='87000' x='4200' y='48125'>
+                  <formatted-text>
+                    <run>NO2
+
+Nitrogen dioxide is part of a group of gaseous air pollutants produced as a result of road traffic and other fossil fuel combustion processes. Its presence in air contributes to the formation and modification of other air pollutants, such as ozone and particulate matter, and to acid rain.</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{93BF1E5D-E140-4753-9E23-9B6584A262FC}' />
+    </dashboard>
+    <dashboard name='MVP'>
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#1b1b1b' />
+        </style-rule>
+      </style>
+      <size maxheight='1200' maxwidth='1000' minheight='1200' minwidth='1000' sizing-mode='fixed' />
+      <zones>
+        <zone h='10083' id='3' name='COVID19' w='34300' x='1100' y='917' />
+        <zone h='35667' id='7' name='Graph_NO2' show-title='false' w='83400' x='14300' y='15000' />
+        <zone h='52833' id='16' name='Chemicals_t' w='27900' x='85100' y='97750' />
+        <zone h='22750' id='23' name='Air Map' w='33300' x='600' y='92917' />
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='4250' id='26' w='10000' x='1200' y='20667'>
+          <formatted-text>
+            <run bold='true' fontcolor='#ffffff' fontsize='28'>NO2</run>
+          </formatted-text>
+        </zone>
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='4250' id='27' w='10700' x='1400' y='36917'>
+          <formatted-text>
+            <run bold='true' fontcolor='#ffffff' fontsize='28'>PM25</run>
+          </formatted-text>
+        </zone>
+        <zone _.fcp.SetMembershipControl.false...type='bitmap' _.fcp.SetMembershipControl.true...type-v2='bitmap' h='12583' id='30' is-centered='0' is-scaled='1' param='Y:/Documents/Data_science/Ironhack/Projects/Tableau_climate_project/sources/covidmolec.png' w='19300' x='61500' y='95667' />
+        <zone h='36750' id='33' name='Covid Map' show-title='false' w='81200' x='10900' y='54500' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='2100' minheight='2100' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='32' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98666' id='31' param='vert' w='98400' x='800' y='667'>
+                <zone fixed-size='133' h='11083' id='3' is-fixed='true' name='COVID19' w='44000' x='2000' y='2083'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='35667' id='7' is-fixed='true' name='Graph_NO2' show-title='false' w='83400' x='11700' y='18667'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='bitmap' _.fcp.SetMembershipControl.true...type-v2='bitmap' fixed-size='273' h='22750' id='30' is-centered='0' is-fixed='true' is-scaled='1' param='Y:/Documents/Data_science/Ironhack/Projects/Tableau_climate_project/sources/covidmolec.png' w='33300' x='5800' y='24083'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='4250' id='26' w='10000' x='1700' y='26000'>
+                  <formatted-text>
+                    <run bold='true' fontcolor='#ffffff' fontsize='28'>NO2</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='4250' id='27' w='10700' x='1700' y='44500'>
+                  <formatted-text>
+                    <run bold='true' fontcolor='#ffffff' fontsize='28'>PM25</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='273' h='22750' id='23' is-fixed='true' name='Air Map' w='33300' x='7200' y='65917'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='52833' id='16' is-fixed='true' name='Chemicals_t' w='27867' x='25933' y='89500'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{94E02424-59D1-451C-B2BA-7C1A31C89B47}' />
+    </dashboard>
+    <dashboard name='MVP (2)'>
+      <style>
+        <style-rule element='table'>
+          <format attr='background-color' value='#1b1b1b' />
+        </style-rule>
+      </style>
+      <size maxheight='1200' maxwidth='1500' minheight='1200' minwidth='1500' sizing-mode='fixed' />
+      <zones>
+        <zone h='49500' id='33' name='Covid Map' show-title='false' w='100200' x='-200' y='-83' />
+        <zone h='10083' id='3' name='COVID19' w='17867' x='6800' y='6583' />
+        <zone h='19417' id='7' name='Graph_NO2' show-title='false' w='48467' x='-67' y='46750' />
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='4250' id='26' w='10000' x='-67' y='59417'>
+          <formatted-text>
+            <run bold='true' fontcolor='#000000' fontsize='28'>NO2</run>
+          </formatted-text>
+        </zone>
+        <zone h='19417' id='34' name='Graph_PM25' show-title='false' w='51600' x='48333' y='46750' />
+        <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='4250' id='27' w='10733' x='48600' y='59583'>
+          <formatted-text>
+            <run bold='true' fontcolor='#000000' fontsize='28'>PM25</run>
+          </formatted-text>
+        </zone>
+        <zone _.fcp.SetMembershipControl.false...type='bitmap' _.fcp.SetMembershipControl.true...type-v2='bitmap' h='12583' id='30' is-centered='0' is-scaled='1' param='Y:/Documents/Data_science/Ironhack/Projects/Tableau_climate_project/sources/covidmolec.png' w='19267' x='86400' y='1083' />
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='2100' minheight='2100' sizing-mode='vscroll' />
+          <zones>
+            <zone _.fcp.SetMembershipControl.false...type='layout-basic' _.fcp.SetMembershipControl.true...type-v2='layout-basic' h='100000' id='32' w='100000' x='0' y='0'>
+              <zone _.fcp.SetMembershipControl.false...type='layout-flow' _.fcp.SetMembershipControl.true...type-v2='layout-flow' h='98666' id='31' param='vert' w='98400' x='800' y='667'>
+                <zone fixed-size='133' h='11083' id='3' is-fixed='true' name='COVID19' w='44000' x='2000' y='2083'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='35667' id='7' is-fixed='true' name='Graph_NO2' show-title='false' w='83400' x='11700' y='18667'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='bitmap' _.fcp.SetMembershipControl.true...type-v2='bitmap' fixed-size='273' h='22750' id='30' is-centered='0' is-fixed='true' is-scaled='1' param='Y:/Documents/Data_science/Ironhack/Projects/Tableau_climate_project/sources/covidmolec.png' w='33300' x='5800' y='24083'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='4250' id='26' w='10000' x='1700' y='26000'>
+                  <formatted-text>
+                    <run bold='true' fontcolor='#000000' fontsize='28'>NO2</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone _.fcp.SetMembershipControl.false...type='text' _.fcp.SetMembershipControl.true...type-v2='text' forceUpdate='true' h='4250' id='27' w='10700' x='1700' y='44500'>
+                  <formatted-text>
+                    <run bold='true' fontcolor='#000000' fontsize='28'>PM25</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{CF2788EC-F67D-4ED5-8492-DD8F1B8535EC}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='30'>
+    <window class='worksheet' name='Correlation'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0FCD2D07-C18F-4AC0-8D9A-5FF594013F25}' />
+    </window>
+    <window class='worksheet' name='Graph_NO2'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]' type='filter' />
+            <card pane-specification-id='4' param='[federated.02maphj0mi41hs13f1h040wepzwd].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{1460A5D3-576A-4AE9-84C4-2FEE1985C1B0}' />
+    </window>
+    <window class='worksheet' name='Graph_PM25'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]' type='filter' />
+            <card pane-specification-id='4' param='[federated.02maphj0mi41hs13f1h040wepzwd].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{6B4E6051-9894-43D3-9886-CFC76B3A74C5}' />
+    </window>
+    <window class='worksheet' name='Confirmed_covid'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D5A98DFD-EC33-4C41-A470-FC7B22C176A3}' />
+    </window>
+    <window class='worksheet' name='PM25'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{7C04ABB4-8A34-4CDD-8F4F-C56D28FD3942}' />
+    </window>
+    <window class='worksheet' name='Covid Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.02maphj0mi41hs13f1h040wepzwd].[sum:Deaths:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='1' />
+      </viewpoint>
+      <simple-id uuid='{2B078E20-7F37-4F8F-9D8F-5738EDC44281}' />
+    </window>
+    <window class='worksheet' name='Covid Map%'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.02maphj0mi41hs13f1h040wepzwd].[usr:Calculation_323414755499986944:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='1' />
+      </viewpoint>
+      <simple-id uuid='{16099BD8-2118-4ECC-8740-8AB5AD4AE36F}' />
+    </window>
+    <window class='worksheet' name='Air Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.02maphj0mi41hs13f1h040wepzwd].[avg:median:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='1' />
+      </viewpoint>
+      <simple-id uuid='{C1D87C39-7CE9-4208-906D-E23BC501EDC6}' />
+    </window>
+    <window class='worksheet' name='why_nulls'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{4501FE24-2E50-43D3-8099-001074210A97}' />
+    </window>
+    <window class='worksheet' name='Sheet 10'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{FB8B6FBF-740D-4CA4-AFD0-7342F170A2B6}' />
+    </window>
+    <window class='worksheet' name='Sheet 11'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{80762295-3C85-498C-9A73-FD7EA2C02AEF}' />
+    </window>
+    <window class='worksheet' name='COVID19'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{1B7A3290-80BF-4E96-84F8-617FDC994039}' />
+    </window>
+    <window class='worksheet' name='Chemicals'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.02maphj0mi41hs13f1h040wepzwd].[none:Specie:nk]' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{F501BFCF-92BC-4FAA-8E7F-D95F470A605D}' />
+    </window>
+    <window class='worksheet' name='Chemicals_t'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{51B3FDB8-A60A-41BA-B998-183A24EBA70B}' />
+    </window>
+    <window class='dashboard' name='MVP'>
+      <viewpoints>
+        <viewpoint name='Air Map'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='COVID19'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Chemicals_t' />
+        <viewpoint name='Covid Map'>
+          <zoom type='entire-view' />
+          <default-map-tool-selection tool='1' />
+        </viewpoint>
+        <viewpoint name='Graph_NO2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{61DE6FB6-548B-49A1-9B08-DE5DA958724C}' />
+    </window>
+    <window class='dashboard' maximized='true' name='MVP (2)'>
+      <viewpoints>
+        <viewpoint name='COVID19'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Covid Map'>
+          <zoom type='entire-view' />
+          <default-map-tool-selection tool='1' />
+        </viewpoint>
+        <viewpoint name='Graph_NO2'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Graph_PM25'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='30' />
+      <simple-id uuid='{B4174F26-C03B-4FB6-8D4A-B6EC9469A24A}' />
+    </window>
+    <window class='dashboard' name='Dashboard 2'>
+      <viewpoints />
+      <active id='-1' />
+      <simple-id uuid='{6B0333FF-8B1C-4981-9429-3B5FF586E1F5}' />
+    </window>
+  </windows>
+</workbook>
