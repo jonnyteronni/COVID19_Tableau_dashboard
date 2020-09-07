@@ -1,4 +1,4 @@
-# Tableau_climate_project
+# COVID19_Tableau_dashboard
 
 ### Date created
 TBD
